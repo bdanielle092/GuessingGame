@@ -12,10 +12,11 @@ namespace guessinggame
             int numberOfAttempts = 0;
             // holds the number of Attempts Available 
             int attemptsAvailable = 0;
-            // setting the difficulty
+            // set the difficultySet to false
             bool difficultySet = false;
+            // sets the cheater to false
             bool isCheater = false;
-
+            // if else statement for difficulty
             while (!difficultySet)
             {
                 Console.WriteLine("Select difficulty easy medium or hard");
@@ -49,12 +50,12 @@ namespace guessinggame
             // message asking the question 
             Console.WriteLine($"Can you guess the secret number? >>");
 
-            // loops through the question base on the  difficulty
+            // loops through the question attempts based on the difficulty
             while (numberOfAttempts < attemptsAvailable)
             {
-                // shows how many guesses you have left 
+                // shows how many guesses you have left, attempts based on the difficulty
                 Console.WriteLine($"You have {attemptsAvailable - numberOfAttempts} guesses left.");
-                // the int32.Parse  into an intger
+                // the int32.Parse  string into an intger
                 int numberGuess = Int32.Parse(Console.ReadLine());
                 // if answer is right then break
                 if (numberGuess == secretNumber)
@@ -66,6 +67,7 @@ namespace guessinggame
                 else if (numberGuess > secretNumber)
                 {
                     Console.WriteLine("Your guess was too high");
+                    // check to see if you are a cheater and the number of attempts
                     if (!isCheater) numberOfAttempts++;
                 }
                 else if (numberGuess < secretNumber)
@@ -75,7 +77,7 @@ namespace guessinggame
                 }
                 else
                 {
-                    // give you four guesses 
+                    // number of guesses
                     if (!isCheater) numberOfAttempts++;
                     Console.WriteLine("Try Again!");
                 }
